@@ -4,7 +4,7 @@
 
 - **zsh does not word-split variables.** `T="python tv.py"; $T probe` fails in zsh with "no such file".
   Use a function: `tv() { "$UPSTREAM/tools/venv/bin/python" "$UPSTREAM/tools/tv.py" "$@"; }`.
-- **Paths with spaces** ("TV cleanup") break any script that stores a command line in a string. Quote
+- **Paths with spaces** (for example "My TV") break any script that stores a command line in a string. Quote
   every path and call through functions. Test generated scripts on a path with a space.
 - **`echo ======` in zsh** is an equals-expansion error. Quote it.
 - `cd` inside a compound command can change the agent's working directory; prefer absolute paths.

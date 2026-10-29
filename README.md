@@ -2,7 +2,8 @@
 
 A [Claude Code](https://claude.com/claude-code) skill that debloats an Android TV or Google TV device over
 ADB, swaps its home screen for a clean Apple TV style launcher built from source, verifies every step on
-the real device, and closes network ADB when it is done. Everything is reversible.
+the real device, and closes network ADB when it is done. Every change is designed to be reversible
+(packages are disabled, never uninstalled).
 
 [繁體中文說明在下方](#繁體中文)
 
@@ -91,16 +92,23 @@ touched; factory packages are never launched; Wi-Fi passwords and accounts are e
 device, never by the agent; network ADB is closed and verified at the end. You are responsible for the
 devices you run this on; use it only on devices you own or are allowed to change.
 
+**No warranty.** This is provided as is (see [LICENSE](LICENSE)) and you use it at your own risk.
+Disabling system packages can still break a feature in a way no check catches. The per-device
+`restore.sh` undoes the changes; a factory reset is the last resort.
+
 ## Credits and licence
 
 - [cleanyourtv](https://github.com/Gathin23/cleanyourtv) by Gathin, MIT: tools, examples and launcher.
 - This skill: MIT, see [LICENSE](LICENSE).
+- Philips, Android TV, Google TV, Chromecast, Apple TV and the other product names here are trademarks
+  of their respective owners. They are used only to describe compatible devices and styles; this
+  project is not affiliated with or endorsed by any of them.
 
 ---
 
 ## 繁體中文
 
-這是一個 [Claude Code](https://claude.com/claude-code) 的 skill。它能透過 ADB 幫 Android TV 或 Google TV 裝置移除預載程式（debloat），把主畫面換成從原始碼編譯、仿 Apple TV 風格的簡潔主畫面。每一步都在實機上驗證，完成後關閉網路 ADB。所有改動都可以還原。
+這是一個 [Claude Code](https://claude.com/claude-code) 的 skill。它能透過 ADB 幫 Android TV 或 Google TV 裝置移除預載程式（debloat），把主畫面換成從原始碼編譯、仿 Apple TV 風格的簡潔主畫面。每一步都在實機上驗證，完成後關閉網路 ADB。所有改動都設計成可以還原（只停用、不解除安裝）。
 
 它建立在開源專案 **[cleanyourtv](https://github.com/Gathin23/cleanyourtv)**（MIT 授權）之上。ADB 工具、有安全檢查的停用與還原腳本、各機型的實測清單，以及主畫面的原始碼都來自 cleanyourtv。這個 skill 會在執行時才去 clone 它，本身不附帶它的程式碼。本專案與 cleanyourtv 沒有隸屬關係。
 
@@ -145,3 +153,5 @@ devices you run this on; use it only on devices you own or are allowed to change
 - Wi-Fi 密碼和帳號由你在裝置上自己輸入。
 - 結束時會關閉網路 ADB，並實際驗證連接埠已經關上。
 - 請只在你擁有、或有權調整的裝置上使用。
+- **不提供任何保證**（見 [LICENSE](LICENSE)），使用風險自負。停用系統套件仍可能讓某些功能出問題，而且不一定檢查得出來。每台裝置的 `restore.sh` 可以還原這些改動，最後手段是恢復原廠設定。
+- Philips、Android TV、Google TV、Chromecast、Apple TV 等名稱是各自擁有者的商標，這裡只用來描述相容的裝置與風格；本專案與它們沒有隸屬關係，也未獲其認可。

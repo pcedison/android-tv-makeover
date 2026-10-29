@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 """Prove network ADB is closed while the device is online.
 
-    scripts/port_check.py <ip> --closed 5555,40235 --alive 6466 [--wait 240]
+    scripts/port_check.py <ip> --closed 5555,<debug-port> --alive 6466 [--wait 240]
 
 Waits up to --wait seconds for one --alive port to accept a connection (the device is up), then
 requires every --closed port to answer "connection refused". A timeout or "host down" on a closed
