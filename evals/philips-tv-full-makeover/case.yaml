@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: philips-tv-full-makeover
+expected_outcome: |
+  plan.md lays out a safe, reversible debloat + launcher plan for a Philips Android TV: backup and restore
+  script first, preference questions before disabling streaming/voice/cast/update packages, small
+  disable-user batches verified on the device, TV-specific checks (Live TV, HDMI, sources), real remote
+  test, reboot check, and closing network ADB with proof that the port refuses connections.

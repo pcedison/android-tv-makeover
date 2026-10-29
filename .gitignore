@@ -1,0 +1,10 @@
+# Per-device work never belongs in this repo: it holds IPs, Wi-Fi names, accounts and screenshots.
+backup/
+shots/
+*.png
+*.jpg
+cleanyourtv/
+*-workspace/
+evals/results/
+__pycache__/
+.DS_Store

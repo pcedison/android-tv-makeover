@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: office-chromecast-no-casting
+expected_outcome: |
+  plan.md handles a Google TV stick on a network the agent does not own: Wireless debugging pairing then
+  adb tcpip 5555, no network scanning, the setupwraith Wi-Fi ownership trap (forget and re-join before
+  disabling it, password typed by the user), casting breaking without setupwraith (fine here), remapping
+  the YouTube remote button, and switching both Wireless and USB debugging off with port checks.

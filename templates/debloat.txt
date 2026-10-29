@@ -1,0 +1,18 @@
+# <Brand model> (<where: living room / break room>), <Wi-Fi | Ethernet>
+# Android <version> (SDK <n>), build <ro.build.display.id>, device <ro.product.device>, board <board>, <RAM>
+# Reference: cleanyourtv examples/<folder> (same board/build: yes/no)
+#
+# Everything is DISABLED (pm disable-user --user 0), never uninstalled. Undo: ../restore.sh
+# Kept on purpose (owner's choice or DO NOT DISABLE on this board): <list, with the reason>
+# Re-enabled by the firmware at boot (from the reboot check): <none yet>
+# Stock launcher <package> is disabled by install.sh, not by this list.
+
+## batch 1 - telemetry and analytics
+# one package per line, with a comment saying what it is and how you know
+com.example.telemetry                    # what it does; evidence (dumpsys / example / label)
+
+## batch 2 - vendor promos, recommendation rows, silent installers
+
+## batch 3 - preloaded apps the owner does not use
+
+## batch 4 - features the owner does not use (voice, casting, vendor extras)

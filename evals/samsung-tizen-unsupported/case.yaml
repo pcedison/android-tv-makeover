@@ -1,0 +1,7 @@
+schema_version: "1.1"
+name: samsung-tizen-unsupported
+expected_outcome: |
+  plan.md says plainly that a Tizen TV cannot be debloated or given a custom launcher with ADB the way
+  Android TV can, does not plan to run adb or package commands against it, and offers realistic
+  alternatives (the TV own privacy and ad settings, DNS filtering on the router, or an external
+  Android TV / Google TV streamer).
