@@ -38,7 +38,8 @@ your board. Samsung Tizen, LG webOS, Roku, Apple TV and cast-only Chromecasts ca
 
 ## Requirements
 
-- Claude Code (or another agent that loads Agent Skills) with shell access, on macOS or Linux.
+- An AI agent that runs on your computer, loads Agent Skills and can run shell commands, on macOS or
+  Linux (see [Install](#install)).
 - The TV/stick on the same network as your computer, Developer options available.
 - Python 3; `adb` (Android platform-tools) for Wireless debugging pairing.
 - For the launcher: JDK 17 and Android SDK platform 34 + build-tools 34 (about 0.9 GB; the skill asks
@@ -46,11 +47,24 @@ your board. Samsung Tizen, LG webOS, Roku, Apple TV and cast-only Chromecasts ca
 
 ## Install
 
-```bash
-git clone https://github.com/pcedison/android-tv-makeover.git ~/.claude/skills/android-tv-makeover
-```
+The skill talks to your TV over your home network, so it needs an AI agent that runs **on your own
+computer** and can run shell commands. The web and mobile chat apps (ChatGPT, Claude.ai, Grok and the
+like) run in the cloud and cannot reach your TV, even where they accept uploaded skills.
 
-Then, in Claude Code, describe the job, for example:
+The skill uses the open [Agent Skills](https://agentskills.io) format (a folder with a `SKILL.md`), so
+any agent that supports that format can load it. It has only been tested with Claude Code.
+
+| Agent | Status | Install |
+|---|---|---|
+| Claude Code (terminal, or the Code tab in the Claude desktop app) | Tested on both devices above | `git clone https://github.com/pcedison/android-tv-makeover.git ~/.claude/skills/android-tv-makeover` |
+| OpenAI Codex (CLI, IDE extension, ChatGPT desktop app) | Should work, not tested | `git clone https://github.com/pcedison/android-tv-makeover.git ~/.agents/skills/android-tv-makeover` |
+| Gemini CLI, GitHub Copilot in VS Code, Cursor and other Agent Skills clients | Should work, not tested | `npx skills add pcedison/android-tv-makeover -g` (the [skills](https://github.com/vercel-labs/skills) installer by Vercel) |
+
+For any other agent, put the folder wherever it loads Agent Skills from. With only a chat app, you can
+paste `SKILL.md` into the chat and run each command yourself, but it is slow and easy to get wrong.
+
+Then describe the job to your agent. No special command is needed; it picks the skill from what you
+ask, for example:
 
 > Clean up my Philips Android TV and give it an Apple TV style home screen. It's on 192.168.1.50.
 
@@ -109,11 +123,19 @@ devices you run this on; use it only on devices you own or are allowed to change
 
 ### 安裝與使用
 
-```bash
-git clone https://github.com/pcedison/android-tv-makeover.git ~/.claude/skills/android-tv-makeover
-```
+這個 skill 要從你的電腦透過家裡網路連到電視，所以必須搭配**裝在你自己電腦上**、能執行終端機指令的 AI 工具。ChatGPT、Claude.ai、Grok 這類網頁或手機 App 是在雲端執行，連不到你家的電視；就算它們能上傳 skill 也一樣用不了。
 
-然後在 Claude Code 裡直接描述你要做的事，例如：「幫我清理家裡的 Philips Android TV，換成 Apple TV 風格的主畫面，IP 是 192.168.1.50」。
+它使用開放的 [Agent Skills](https://agentskills.io) 格式（一個含 `SKILL.md` 的資料夾），所以支援這個格式的 AI 工具都能載入。目前只有 Claude Code 實測過。
+
+| AI 工具 | 狀態 | 安裝方式 |
+|---|---|---|
+| Claude Code（終端機版，或 Claude 桌面 App 的 Code 分頁） | 上面兩台裝置都實測過 | `git clone https://github.com/pcedison/android-tv-makeover.git ~/.claude/skills/android-tv-makeover` |
+| OpenAI Codex（CLI、IDE 擴充、ChatGPT 桌面 App） | 照標準應該能用，未實測 | `git clone https://github.com/pcedison/android-tv-makeover.git ~/.agents/skills/android-tv-makeover` |
+| Gemini CLI、VS Code 的 GitHub Copilot、Cursor 等支援 Agent Skills 的工具 | 照標準應該能用，未實測 | `npx skills add pcedison/android-tv-makeover -g`（Vercel 的 [skills](https://github.com/vercel-labs/skills) 安裝工具） |
+
+其他 AI 工具，把資料夾放到它讀取 Agent Skills 的位置即可。如果只有聊天 App，也可以把 `SKILL.md` 貼進對話、自己一行一行跑指令，但很慢，也容易出錯。
+
+裝好後直接跟 AI 描述你要做的事，不需要特別的指令，它會從描述判斷要用這個 skill。例如：「幫我清理家裡的 Philips Android TV，換成 Apple TV 風格的主畫面，IP 是 192.168.1.50」。
 
 過程中大約會有三到四輪問題，包括你用哪些 app、語音／投放／更新要不要留、Dock 放哪些 app、要不要開擋廣告 DNS。也有幾個步驟需要你在電視前操作：開啟偵錯、按允許、按遙控器測試；如果是 Google TV，還要重新連一次 Wi-Fi。
 
